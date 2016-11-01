@@ -38,11 +38,13 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 4. Observa por encima el flujo de tramas en el menú de Statistics en IO Graphs. La captura que estamos viendo incluye desde la inicialización (registro) de la aplicación hasta su finalización, con una llamada entremedias.
  ** Filtra por sip para conocer cuándo se envían paquetes SIP. ¿En qué segundos tienen lugar esos envíos?
- ** Y los paquetes con RTP, ¿cuándo se envían?
+    Se envian paquetes SIP en los segundos:
+    7.343770-7.567714s, 14.426793s, 14.61053s, 16-16.4s, 38-39.3s, 55.5-55.859934s
+ ** Y los paquetes con RTP, ¿cuándo se envían? 
+    Se envian mientras ocurre la llamada, entre los segundos 17s y 38.3s aproximadamente.
 
 
 
-[Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 5. Analiza las primeras cuatro tramas de la captura nada más arrancar Ekiga.
  ** ¿Qué servicio es el utilizado en estas tramas?
