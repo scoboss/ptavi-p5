@@ -112,11 +112,6 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 
 
-
-
-
-
-
 9. Fijémonos en las tramas siguientes a la número 46:
  ** ¿Se registra con éxito en el primer intento?
  ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
