@@ -128,9 +128,23 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
+    Si, esto puede verse en la trama de INVITE, en el campo de Session Initiation Protocol, en Message Header, 
+    en el campo From. En este caso: Nombre : \"Gregorio Robles\"   Dirección SIP: sip:grex@ekiga.net
  ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
+    El contenido de la trama lo vemos en el campo Session Initiation Protocol, en Message Body. 
+    En este campo podemos ver que se emplea el protocolo SDP (Session Description Protocol). 
  ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+    No, el primer intento de INVITE no tiene éxito. Esto lo vemos en la trama 85, en la que el servidor envía un 
+    mensaje de 407 Proxy Authentication Required. 
+    Esto se debe a que el servidor proxy requiere que se autentifique, ademas podemos ver como se envía otro INVITE.
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+    En el segundo INVITE podemos ver que el tamaño del paquete es mayor (1181 bytes) respecto al primer intento (744 bytes).
+    El paquete es mayor debido a que en el segundo intento se incluye el campo sip.Proxy-Authorization. 
+    Campo necesario para poder establecer la conexión. De esta forma la conexión se establecerá con éxito.
+
+
+
+
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
