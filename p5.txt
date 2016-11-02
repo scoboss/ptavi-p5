@@ -143,26 +143,54 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     Campo necesario para poder establecer la conexión. De esta forma la conexión se establecerá con éxito.
 
 
-
-
-
-
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
+    Podemos ver en las tramas siguientes que se utilizan los protocolos: RTP, H.261, RTCP y ARP.
+    
+    RTP: El protocolo RTP (Real-time Transport Protocol) es un protocolo de nivel de sesión utilizado para la transmisión 
+    de información en tiempo real, como por ejemplo audio y vídeo en una video-conferencia.
+    H.261: Funciona sobre RTP y permite la compresión de audio, video, videoconferencias.
+    RTCP: El protocolo RTCP (Rel-time Transport Control Protocol) es utilizado para enviar datos de control entre el emisor
+    y receptor de una secuencia RTP. Los paquetes RTCP son enviados aproximadamente cada cinco segundos, y contienen datos
+    que ayudan a verificar las condiciones de transmisión en el extremo remoto. 
+    ARP: El protocolo ARP (Address Resolution Protocol) es un protocolo de comunicaciones de la capa de enlace de datos,
+    responsable de encontrar la dirección de hardware (Ethernet MAC) que corresponde a una determinada dirección IP. 
+    Para ello se envía un paquete (ARP request) a la dirección de difusión de la red (broadcast, MAC = FF FF FF FF FF FF) 
+    que contiene la dirección IP por la que se pregunta, y se espera a que esa máquina (u otra) responda (ARP reply) con 
+    la dirección Ethernet que le corresponde. Cada máquina mantiene una caché con las direcciones traducidas para reducir 
+    el retardo y la carga. ARP permite a la dirección de Internet ser independiente de la dirección Ethernet, pero esto 
+    solo funciona si todas las máquinas lo soportan.
  ** ¿Cuál es el tamaño de paquete de los mismos?
+    El tamaño de los paquetes RTP es de 214 bytes, para RTCP de 102 bytes y el tamaño de H.261 es variable.
  ** ¿Se utilizan bits de padding?
+    No se utilizan bits de padding, ya que se puede ver en la trama, en el campo Padding aparece False(a cero).
  ** ¿Cuál es la periodicidad de los paquetes que se envían?
+    La periodicidad de los paquetes que se envían la podemos comprobar en el campo timestamp.
+    Para poder calcular esta peridiocidad tenemos que tener en cuenta que se transmite a 64kb/s, además conocemos el
+    timestamp (160), es decir, que mandaremis 50 paquetes de 1280 bits por segundo.
+    Es decir, el periodo será 1/50, que es 0.02 segundos.
  ** ¿Cuántos bits/segundo estamos enviando?
-
-
+    Se transmite a 64kb/s, por tanto estamos enviando a 64000 bit por segundo.
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
+
+
+
+
+
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
  ** ¿Cuántos paquetes se pierden?
  ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
  ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+
+
+
+
+
+
+
 
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
