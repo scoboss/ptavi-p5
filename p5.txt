@@ -203,12 +203,23 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
  ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
+    El valor del delta y el jitter del primer paquete que ha llegado lo vemos en Telephony, RTP, Stream Analysis, 
+    y ahí vemos estos en Delta(ms) y Filtered Jitter(ms). 
+    En nuestro caso el valor de delta es 0.00 ms, y el valor del jitter tambien es de 0.00 ms. Ambos nulos.
  ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
+    Si, lo podemos saber, mediante el número de secuencia, y el marker del paquete RTP, que es TRUE. Esto nos indica que 
+    es el primer paquete RTP de la comunicación.
  ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
+    Los valores de jitter son menores de 10ms hasta el paquete 247.
  ** ¿A qué se debe el cambio tan brusco del jitter?
+    El cambio tan brusco del jitter debido al aumento en el retardo, y a su vez una disminución en el ancho de banda.
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
+    Si, es comparable, ya que como hemos visto anteriormente el jitter varía en función del valor de la delta, que 
+    nos da la diferencia de tiempo entre el envío de un paquete y el anterior. En este caso al tener un aumento 
+    considerable de la delta el paquete llegará mucho más tarde comparado con los paquetes enviados con anterioridad.
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
-
+    La dependencia entre el tiempo transcurrido desde el paquete anterior y el valor del jitter es la variabilidad 
+    del retardo. Esto se debe a que cuando uno aumenta bruscamente lo hace el otro también.
 
 
 
