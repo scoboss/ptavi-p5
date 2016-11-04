@@ -288,6 +288,14 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
  ** ¿Son diferentes el registro y la descripción de la sesión?
 
 
+
+
+
+
+
+
+
+
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
  ** ¿Cuál es su periodicidad?
