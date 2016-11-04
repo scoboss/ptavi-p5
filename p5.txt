@@ -259,8 +259,18 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 16. Finalmente, se cierra la aplicación de VozIP.
  ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+    Aparece una instrucción SIP del tipo REGISTER en el final de la comunicación porque el usuario quiere darse de baja,
+    es decir, que el servidor le borre de la lista y terminar la sesion, para esto el campo expires tiene que ir con 
+    valor 0.
  ** ¿En qué trama sucede esto?
+    Vemos que ell método REGSTER se envía en las tramas 950 y 952, se envía dos veces, ya que en el primer envío el 
+    servidor contesta 401 Unauthorized, ya que el usuario no ha incluido la información de autorización. Por esta razón 
+    se envía un segundo REGISTER, en el que si se incluye dicha información, y por lo tanto el servidor responde con un 
+    200 OK.
  ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+    La diferencia entre la instrucción que se realizó al principio de la sesión y la instrucción de ahora, del final 
+    de la sesión es el valor del campo Expires. En el inicio de la sesión el campo Expires tiene un valor de 3600 segundos,
+    y en el final de la sesión tiene un valor de 0 (para poder terminar la conexión).
 
 
 
