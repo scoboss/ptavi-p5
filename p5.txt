@@ -17,7 +17,9 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
  ** ¿Cuánto tiempo dura la captura?
     La captura dura 56.149345, dato que podemos ver en la segunda columna de la captura(Time), en el ultimo paquete(954).
  ** ¿Qué IP tiene la máquina donde se ha efectuado la captura? ¿Se trata de una IP pública o de una IP privada? ¿Por qué lo sabes?
-    La Ip donde se ha efectuado la captura es 192.168.1.34. Se trata de una IP privada, esto lo sabemos dado que hay ciertas IPs reservadas con un determinado rango(192.168.0.0 - 192.168.255.255), y esta pertenece a dicho rango.
+    La Ip donde se ha efectuado la captura es 192.168.1.34. Se trata de una IP privada, esto lo sabemos dado que hay 
+    ciertas IPs reservadas con un determinado rango(192.168.0.0 - 192.168.255.255), y esta pertenece a dicho rango.
+
 
 
 3. Antes de analizar las tramas, mira las estadísticas generales que aparecen en el menú de Statistics. En el apartado de jerarquía de protocolos (Protocol Hierarchy) se puede ver el porcentaje del tráfico correspondiente al protocolo TCP y UDP.
@@ -27,7 +29,6 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     Es mayor el porcentaje de UDP, y podemos afirmar que es consistente puesto que con una aplicación que transmite 
     en tiempo real, se necesita un intercambio de paquetes mayor, ya que no hay retrasmisiones por los retardos que puedan
     existir en estas aplicaciones y sus implicaciones.
-
  ** ¿Qué otros protocolos podemos ver en la jerarquía de protocolos?
     En la jerarquía de protocolos podemos ver otros protocolos como:
      RTP (Real-Time Transport Protocol), RTCP (Real-Time Transport Control Protocol), IP (Internet Protocol Version 4),
@@ -42,7 +43,6 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     7.343770-7.567714s, 14.426793s, 14.61053s, 16-16.4s, 38-39.3s, 55.5-55.859934s
  ** Y los paquetes con RTP, ¿cuándo se envían? 
     Se envian mientras ocurre la llamada, entre los segundos 17s y 38.3s aproximadamente.
-
 
 
 
@@ -126,6 +126,7 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     El valor del tiempo de expiración de la sesión es 3600 segundos, esto lo vemos en el campo Message Header, Expires.
 
 
+
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
     Si, esto puede verse en la trama de INVITE, en el campo de Session Initiation Protocol, en Message Header, 
@@ -141,6 +142,7 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     En el segundo INVITE podemos ver que el tamaño del paquete es mayor (1181 bytes) respecto al primer intento (744 bytes).
     El paquete es mayor debido a que en el segundo intento se incluye el campo sip.Proxy-Authorization. 
     Campo necesario para poder establecer la conexión. De esta forma la conexión se establecerá con éxito.
+
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
@@ -173,9 +175,6 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     Se transmite a 64kb/s, por tanto estamos enviando a 64000 bit por segundo.
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
-
-
-
 
 
 
@@ -272,12 +271,11 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
     de la sesión es el valor del campo Expires. En el inicio de la sesión el campo Expires tiene un valor de 3600 segundos,
     y en el final de la sesión tiene un valor de 0 (para poder terminar la conexión).
 
-
-
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 ================================================================================
 ================================================================================
+
 
 Captura de una sesión SIP
 
