@@ -313,9 +313,9 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
  ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
     Hemos utilizado sip:music@iptel.org, el cual ofrece un servicio de musica, canciones es decir, un servicio de audio.
 
-
-
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
+
+
 
 19. Filtra por los paquetes SIP de la captura y guarda únicamente los paquetes SIP como sip.libpcap. Abre el fichero guardado para cerciorarte de que lo has hecho bien. Deberás guardarlo en un archivo de nombre p5.libpcap y añadirlo al repositorio.
 
