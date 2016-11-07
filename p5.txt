@@ -129,8 +129,8 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
-    Si, esto puede verse en la trama de INVITE, en el campo de Session Initiation Protocol, en Message Header, 
-    en el campo From. En este caso: Nombre : \"Gregorio Robles\"   Dirección SIP: sip:grex@ekiga.net
+    Si, esto puede verse en la trama de INVITE, en el campo de Session Initiation Protocol, en Message Header, en el campo From. 
+    En este caso: Nombre : \"Gregorio Robles\"   Dirección SIP: sip:grex@ekiga.net
  ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
     El contenido de la trama lo vemos en el campo Session Initiation Protocol, en Message Body. 
     En este campo podemos ver que se emplea el protocolo SDP (Session Description Protocol). 
@@ -191,8 +191,7 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
  ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
     Primer flujo: Max 183.10 ms; Media 153.24 ms
     Segundo flujo: Max 119.64 ms; Media 42.5 ms
-    Esto determina la variación temporal que experimenta el retardo en una transmisión de paquetes entre los puntos inicial
-    y final de la comunicación.
+    Esto determina la variación temporal que experimenta el retardo en una transmisión de paquetes entre los puntos inicial y final de la comunicación.
     Para que una conversación sea de de calidad no debemos tener un valor muy alto ya que esto implicaría recibir los
     paquetes tarde, algo que no concuerda con lo que tratamos como calidad. 
     En este caso no tenemos demasiada calidad ya que si tenemos un jitter de 150 ms de ida y suponemos el mismo de vuelta 
@@ -283,23 +282,36 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
 
 17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
  ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
+    En la captura vemos que no es necesario el uso de DNS y STUN.
+    Estos protocolos no son necesarios, porque estamos usando una ip publica.
  ** ¿Son diferentes el registro y la descripción de la sesión?
-
-
-
-
-
-
-
+    Son diferentes, se diferencian en el campo allow y en el puerto que utilizan.
 
 
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
+    Tenemos dos flujos de audio, uno de ida y otro de vuelta.
  ** ¿Cuál es su periodicidad?
+    La misma que en la anterior, 160, por tanto su periocidad será la misma, 0.02s.
  ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
+    Flujo1:
+        Valor maximo delta: 30.637ms
+        Valor medio jitter: 3.351
+        Valor maximo jitter:5.590
+
+    Flujo2:
+        Valor maximo delta: 83.850ms
+        Valor medio jitter: 1.390
+        Valor maximo jitter: 7.072
+
  ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
+    Para poder reproducir la conversacion desde Wireshark tenemos que ir a Telephony, VoIP Calls, y darle al Play, y luego Decode, y de esta forma se reproduce 
+    nuestra conversacion.
+    Si reproducimos la conversacion poniendo un valor demasiado pequeño para el buffer de jitter comprobamos que se escucha entrecortado, perdemos informacion 
+    y por tanto la calidad no es buena.
  ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+    Hemos utilizado sip:music@iptel.org, el cual ofrece un servicio de musica, canciones es decir, un servicio de audio.
 
 
 
